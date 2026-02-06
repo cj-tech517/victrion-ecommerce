@@ -1,0 +1,23 @@
+<nav aria-label="breadcrumb" style="margin-bottom:20px;">
+    <ol style="list-style:none; padding:0; display:flex; gap:5px; font-size:14px;">
+        <li>
+            <a href="{% url 'home' %}" style="text-decoration:none; color:#555;">Home</a>
+        </li>
+
+        {% if category %}
+            <li>›</li>
+            <li>
+                <a href="{% url 'category_products' category.slug %}" style="text-decoration:none; color:#555;">
+                    {{ category.name }}
+                </a>
+            </li>
+        {% endif %}
+
+        {% if product %}
+            <li>›</li>
+            <li style="color:black; font-weight:bold;">
+                {{ product.name }}
+            </li>
+        {% endif %}
+    </ol>
+</nav>
