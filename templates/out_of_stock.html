@@ -1,0 +1,9 @@
+ {% extends 'base.html' %}
+
+{% block content %}
+<h2>Oops! Item out of stock 😞</h2>
+<p>The product <strong>{{ item.product.name }}</strong> only has {{ item.product.stock }} left in stock.</p>
+<a href="{% url 'cart_detail' %}">← Back to Cart</a>
+{% endblock %} 
+
+

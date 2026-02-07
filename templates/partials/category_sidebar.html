@@ -1,4 +1,4 @@
-<div class="category-sidebar" style="border-right:1px solid #ddd; padding-right:15px;">
+<!-- <div class="category-sidebar" style="border-right:1px solid #ddd; padding-right:15px;">
     <h4>Categories</h4>
 
     <ul style="list-style:none; padding:0;">
@@ -20,4 +20,42 @@
             {% endif %}
         {% endfor %}
     </ul>
+</div> -->
+
+
+
+<div class="sidebar">
+    <h3>Categories</h3>
+    <ul>
+        {% for cat in sidebar_categories %}
+        <li {% if active_category == cat.slug %}style="font-weight:bold;"{% endif %}>
+            <a href="{% url 'category_products' cat.slug %}">{{ cat.name }} ({{ cat.product_count }})</a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h3>New Arrivals</h3>
+    <ul style="list-style:none; padding:0;">
+        {% for product in newest_products %}
+        <li style="display:flex; align-items:center; margin-bottom:10px;">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width:50px; height:50px; object-fit:cover; margin-right:10px; border-radius:4px;">
+            {% endif %}
+            <a href="{% url 'product_detail' product.slug %}" style="text-decoration:none; color:black;">
+                {{ product.name }} - ${{ product.price }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+
+
+
+
+
+
+
+
 </div>
+
+
+<!-- Sidebar New Arrivals -->

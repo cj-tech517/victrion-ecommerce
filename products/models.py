@@ -2,7 +2,6 @@ from django.db import models
 
 # Create your models here.
 
-from django.db import models
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -24,6 +23,16 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.PositiveIntegerField()
     image = models.ImageField(upload_to='products/')
+    created_at = models.DateTimeField(auto_now_add=True)
+    related_products = models.ManyToManyField(
+        'self',
+        blank=True,
+        symmetrical=False,
+        related_name='featured_in'
+    )
+
 
     def __str__(self):
         return self.name
+    
+    
